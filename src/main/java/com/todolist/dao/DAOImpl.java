@@ -1,10 +1,12 @@
-package com.todolist.database;
+package com.todolist.dao;
+
+import com.todolist.model.Task;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Properties;
 
-public class DBTasks {
+public class DAOImpl {
     private static final String URL = "jdbc:mysql://localhost:3306/todolist";
     private static final String USERNAME = "root";
     private static final String PASSWORD = "root";
@@ -14,7 +16,7 @@ public class DBTasks {
         return connection;
     }
 
-    public DBTasks() {
+    public DAOImpl() {
         Properties properties = new Properties();
         properties.setProperty("user", USERNAME);
         properties.setProperty("password", PASSWORD);
@@ -29,7 +31,7 @@ public class DBTasks {
         }
     }
 
-    void createTable() throws SQLException {
+    public void createTable() throws SQLException {
         String createTableSQL = "CREATE TABLE tasks("
                 + "TASK_ID INT(11) NOT NULL AUTO_INCREMENT,"
                 + "TASK_TEXT VARCHAR(100) NOT NULL, "
@@ -88,7 +90,7 @@ public class DBTasks {
     }
 
     /*CRUD: read task by it's ID from DB*/
-    void readTaskFromDB (int id) throws SQLException {
+    public void readTaskFromDB (int id) throws SQLException {
         String textTask;
         String selectTableSQL = "SELECT TASK_ID, TASK_TEXT FROM tasks WHERE TASK_ID="+id;
 
@@ -104,7 +106,7 @@ public class DBTasks {
     }
 
     /*CRUD: update task by it's ID in DB*/
-    void updateTaskInDB (int id, String string) throws SQLException {
+    public void updateTaskInDB (int id, String string) throws SQLException {
         String updateTableSQL = "UPDATE tasks SET TASK_TEXT = '"+string+"' WHERE TASK_ID = "+id;
 
         try (Statement statement = connection.createStatement()){
@@ -116,7 +118,7 @@ public class DBTasks {
     }
 
     /*CRUD: remove task by it's ID from DB*/
-    void deleteTaskFromDB (int id) {
+    public void deleteTaskFromDB (int id) {
         String deleteTableSQL = "DELETE FROM tasks WHERE TASK_ID = "+id;
 
         try (Statement statement = connection.createStatement()){

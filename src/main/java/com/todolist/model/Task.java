@@ -1,4 +1,4 @@
-package com.todolist.database;
+package com.todolist.model;
 
 public class Task {
     private int id;

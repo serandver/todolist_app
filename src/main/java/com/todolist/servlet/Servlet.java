@@ -1,8 +1,8 @@
 package com.todolist.servlet;
 
 import com.google.gson.Gson;
-import com.todolist.database.DBTasks;
-import com.todolist.database.Task;
+import com.todolist.dao.DAOImpl;
+import com.todolist.model.Task;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -15,7 +15,7 @@ import java.util.ArrayList;
 public class Servlet extends HttpServlet{
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        DBTasks dbTasks = new DBTasks();
+        DAOImpl dbTasks = new DAOImpl();
         ArrayList listTask=null;
         try {
             listTask = dbTasks.readAllTasksFromDB();
@@ -28,7 +28,7 @@ public class Servlet extends HttpServlet{
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        DBTasks dbTasks = new DBTasks();
+        DAOImpl dbTasks = new DAOImpl();
         String textTask = req.getParameter("textNewTask");
         Task newTask = new Task(textTask);
         int taskId=-1;

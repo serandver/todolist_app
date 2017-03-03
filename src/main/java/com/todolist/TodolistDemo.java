@@ -1,10 +1,13 @@
-package com.todolist.database;
+package com.todolist;
+
+import com.todolist.dao.DAOImpl;
+import com.todolist.model.Task;
 
 import java.sql.SQLException;
 
-public class Main {
+public class TodolistDemo {
     public static void main(String[] argv) {
-        DBTasks dbTasks = new DBTasks();
+        DAOImpl dbTasks = new DAOImpl();
 
         try {
             dbTasks.createTable();
