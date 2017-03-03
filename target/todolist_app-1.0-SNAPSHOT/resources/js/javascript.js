@@ -47,9 +47,8 @@ $(document).ready(function() {
         $(this).parent('div').parent('div').children('.task-todo').toggleClass('itemDone');
         todolist.itemsCompletedCount += 1;
         todolist.itemsLeftCount = todolist.itemsLeftCount - 1;
-        todolist.init();
     });
 
 
-    
+
 }); //end ready

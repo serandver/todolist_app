@@ -7,12 +7,11 @@ public class Main {
         DBTasks dbTasks = new DBTasks();
 
         try {
-//            dbTasks.createTable();
-//            dbTasks.insertNewTaskToDB(new Task("Почистить кэш!"));
-            System.out.println(dbTasks.insertNewTaskToDB(new Task("Полить вазоны")));
-//            dbTasks.insertNewTaskToDB(new Task("Приготовить обед"));
-//            dbTasks.insertNewTaskToDB(new Task("Погладить кота"));
-//            dbTasks.readAllTasksFromDB();
+            dbTasks.createTable();
+            dbTasks.insertNewTaskToDB(new Task("Почистить кэш!"));
+            dbTasks.insertNewTaskToDB(new Task("Приготовить обед"));
+            dbTasks.insertNewTaskToDB(new Task("Погладить кота"));
+            dbTasks.readAllTasksFromDB();
 //            dbTasks.readTaskFromDB(2);
 //            dbTasks.updateTaskInDB(4, "дать коту пожрать");
         } catch (SQLException e) {

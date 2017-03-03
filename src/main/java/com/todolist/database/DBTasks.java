@@ -2,11 +2,12 @@ package com.todolist.database;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Properties;
 
 public class DBTasks {
     private static final String URL = "jdbc:mysql://localhost:3306/todolist";
     private static final String USERNAME = "root";
-    private static final String PASSWORD = "ckfdenf111";
+    private static final String PASSWORD = "root";
     private Connection connection;
 
     public Connection getConnection() {
@@ -14,9 +15,13 @@ public class DBTasks {
     }
 
     public DBTasks() {
+        Properties properties = new Properties();
+        properties.setProperty("user", USERNAME);
+        properties.setProperty("password", PASSWORD);
+        properties.setProperty("useSSL", "false");
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            connection = DriverManager.getConnection(URL,USERNAME,PASSWORD);
+            connection = DriverManager.getConnection(URL, properties);
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } catch (SQLException e) {
