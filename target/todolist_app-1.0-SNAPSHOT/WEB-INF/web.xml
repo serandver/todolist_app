@@ -12,6 +12,6 @@
 
     <servlet-mapping>
         <servlet-name>Servlet</servlet-name>
-        <url-pattern>/Servlet</url-pattern>
+        <url-pattern>/todolist</url-pattern>
     </servlet-mapping>
 </web-app>

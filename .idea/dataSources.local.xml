@@ -10,5 +10,23 @@
       <secret-storage>master_key</secret-storage>
       <user-name>user</user-name>
     </data-source>
+    <data-source name="postgres@localhost" uuid="bedcb7aa-27de-43bb-9f65-49b990490b56">
+      <database-info product="PostgreSQL" version="9.6.2" jdbc-version="4.0" driver-name="PostgreSQL Native Driver" driver-version="PostgreSQL 9.4 JDBC4 (build 1201)">
+        <identifier-quote-string>&quot;</identifier-quote-string>
+      </database-info>
+      <case-sensitivity plain-identifiers="lower" quoted-identifiers="exact" />
+      <secret-storage>master_key</secret-storage>
+      <user-name>postgres</user-name>
+      <resolve-scope>postgres:postgres,public</resolve-scope>
+    </data-source>
+    <data-source name="heroku_db" uuid="246407c6-d263-429b-a683-bfe857f35b39">
+      <database-info product="MySQL" version="5.5.40-log" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
+        <extra-name-characters>#@</extra-name-characters>
+        <identifier-quote-string>`</identifier-quote-string>
+      </database-info>
+      <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower" />
+      <secret-storage>master_key</secret-storage>
+      <user-name>b36f008c4cf8a4</user-name>
+    </data-source>
   </component>
 </project>

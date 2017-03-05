@@ -16,7 +16,7 @@ public class Servlet extends HttpServlet{
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         DAOImpl dbTasks = new DAOImpl();
-        ArrayList listTask=null;
+        ArrayList<Task> listTask=null;
         try {
             listTask = dbTasks.readAllTasksFromDB();
         } catch (SQLException e) {

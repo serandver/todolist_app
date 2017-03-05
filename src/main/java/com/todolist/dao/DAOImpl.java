@@ -6,10 +6,12 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.Properties;
 
-public class DAOImpl {
-    private static final String URL = "jdbc:mysql://localhost:3306/todolist";
-    private static final String USERNAME = "root";
-    private static final String PASSWORD = "root";
+public class DAOImpl implements DAO{
+//    private static final String URL = "jdbc:postgresql://localhost:5432/todolist";
+    private static final String URL = "jdbc:mysql://eu-cdbr-west-01.cleardb.com:3306/heroku_9e1e9dd0f20dec3";
+    private static final String USERNAME = "b36f008c4cf8a4";
+//    private static final String USERNAME = "postgres";
+    private static final String PASSWORD = "c0fd4343";
     private Connection connection;
 
     public Connection getConnection() {
@@ -22,6 +24,7 @@ public class DAOImpl {
         properties.setProperty("password", PASSWORD);
         properties.setProperty("useSSL", "false");
         try {
+//            Class.forName("org.postgresql.Driver");
             Class.forName("com.mysql.jdbc.Driver");
             connection = DriverManager.getConnection(URL, properties);
         } catch (ClassNotFoundException e) {
@@ -35,6 +38,7 @@ public class DAOImpl {
         String createTableSQL = "CREATE TABLE tasks("
                 + "TASK_ID INT(11) NOT NULL AUTO_INCREMENT,"
                 + "TASK_TEXT VARCHAR(100) NOT NULL, "
+                + "TASK_STATUS BOOLEAN, "
                 + "PRIMARY KEY (TASK_ID) "
                 + ")";
 
@@ -75,13 +79,17 @@ public class DAOImpl {
             while (rs.next()) {
                 String taskId = rs.getString("TASK_ID");
                 String taskText = rs.getString("TASK_TEXT");
+                String taskStatus = rs.getString("TASK_STATUS");
 
                 task=new Task(taskText);
                 task.setId(Integer.parseInt(taskId));
+                task.setTextStatus(Boolean.parseBoolean(taskStatus));
                 list.add(task);
 
                 System.out.println("taskId : " + taskId);
                 System.out.println("taskText : " + taskText);
+                System.out.println("taskStatus : " + taskText);
+
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());

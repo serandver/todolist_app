@@ -1,9 +1,10 @@
 $(document).ready(function() {
 
-    //set empty field on focus, default field on blur
+    //set empty field on focus
     $('#newItem').focus(function() {
         if (this.value=='What needs to be done?') {this.value=''}
     });
+    //set default field on blur
     $('#newItem').blur(function() {
         if (this.value=='') {this.value='What needs to be done?'}
     });
@@ -19,7 +20,7 @@ $(document).ready(function() {
         }
             $.ajax({
                 type: 'POST',
-                url: '/Servlet',
+                url: '/todolist',
                 data: {textNewTask: textNewTask},
                 success: function (result) {
                     var res = JSON.parse(result);

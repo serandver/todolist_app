@@ -25,6 +25,14 @@ public class Task {
         this.textTask = textTask;
     }
 
+    public boolean isTextStatus() {
+        return textStatus;
+    }
+
+    public void setTextStatus(boolean textStatus) {
+        this.textStatus = textStatus;
+    }
+
     @Override
     public String toString() {
         return "Task{" +

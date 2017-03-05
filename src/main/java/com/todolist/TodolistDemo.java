@@ -15,11 +15,15 @@ public class TodolistDemo {
             dbTasks.insertNewTaskToDB(new Task("Приготовить обед"));
             dbTasks.insertNewTaskToDB(new Task("Погладить кота"));
             dbTasks.readAllTasksFromDB();
-//            dbTasks.readTaskFromDB(2);
-//            dbTasks.updateTaskInDB(4, "дать коту пожрать");
+            dbTasks.readTaskFromDB(2);
+            dbTasks.updateTaskInDB(4, "дать коту пожрать");
+            dbTasks.readAllTasksFromDB();
+            dbTasks.deleteTaskFromDB(4);
+            dbTasks.readAllTasksFromDB();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
-//        dbTasks.deleteTaskFromDB(4);
+
+
     }
 }
